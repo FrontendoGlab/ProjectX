@@ -1,0 +1,144 @@
+.form-title {
+    font-family: "Inter-Black";
+    font-size: 32px;
+}
+.logo {
+    height: 72px;
+    width: 72px;
+}
+.hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    opacity: 0;
+    user-select: none;
+}
+
+.form-label {
+    &__text {
+        font-size: 16px;
+        color: var(--black1-font);
+        display: block;
+        text-align: left;
+        margin: 0 0 8px 0;
+        transition: all 0.5s;
+    }
+    &__wrapper {
+        height: 48px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    &__input {
+        position: relative;
+        font-family: "Inter-Regular";
+        font-size: 16px;
+        color: var(--black1-font);
+        &::placeholder {
+            color: var(--grey1-font);
+        }
+    }
+    &__decor {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        transition: all 0.5s;
+        border: 1px solid var(--grey1-border);
+        border-radius: 12px;
+    }
+    &__input:focus + .form-label__decor{
+        border: 1px solid var(--purple1-border);
+    }
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    &__text {
+        font-size: 16px;
+        color: var(--black1-font);
+    }
+    &__input-wrapper {
+        display: inline-block;
+        position: relative;
+        height: 19px;
+        width: 19px;
+        padding: 2px;
+        border: 1px solid var(--black1-border);
+        border-radius: 3px;
+        margin: 0 8px 0 0;
+    }
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        opacity: 0;
+    }
+    &__decor {
+        width: 100%;
+        height: 100%;
+        background-color: var(--purple1-bg);
+        opacity: 0;
+        scale: 0.3;
+        transform-origin: center;
+        visibility: hidden;
+        transition: all 0.5s;
+        border-radius: 3px;
+    }
+    &__input:checked + .form-checkbox__decor {
+        opacity: 1;
+        scale: 1;
+        visibility: visible;
+        border-radius: 3;
+    }
+}
+
+.form-button {
+    text-align: center;
+    padding: 13px 0;
+    border-radius: 12px;
+    font-family: "Inter-Bold";
+    color: var(--white-font);
+    font-size: 16px;
+    line-height: 1.37;
+    background-color: var(--purple1-bg);
+    transition: background-color 0.5s;
+}
+
+@media(hover:hover) {
+    .form-label:hover {
+        & .form-label__decor {
+            border: 1px solid var(--purple1-border);
+        }
+        & .form-label__text {
+            color: var(--purple1-font);
+        }
+    }
+    .form-checkbox__input:hover {
+        cursor: pointer;
+    }
+    .form-button:hover {
+        background-color: var(--purple3-bg);
+    }
+}
+
+.form-button {
+    &:active {
+        transition: background-color 0s;
+        background-color: var(--blue1-bg);
+        transform: scale(0.97);
+    }   
+}
