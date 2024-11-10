@@ -37,15 +37,15 @@
 
 # Logs
 /backend/logs
-*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
+/backend/*.log
+/backend/npm-debug.log*
+/backend/pnpm-debug.log*
+/backend/yarn-debug.log*
+/backend/yarn-error.log*
+/backend/lerna-debug.log*
 
 # OS
-.DS_Store
+/backend/.DS_Store
 
 # Tests
 /backend/coverage
@@ -56,16 +56,16 @@ lerna-debug.log*
 /backend/.project
 /backend/.classpath
 /backend/.c9/
-*.launch
+/backend/*.launch
 /backend/.settings/
-/*.sublime-workspace
+/backend/*.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+/backend/.vscode/*
+!/backend/.vscode/settings.json
+!/backend/.vscode/tasks.json
+!/backend/.vscode/launch.json
+!/backend/.vscode/extensions.json
 
 # dotenv environment variable files
 /backend/.env
@@ -80,9 +80,9 @@ lerna-debug.log*
 
 # Runtime data
 /backend/pids
-*.pid
-*.seed
-*.pid.lock
+/backend/*.pid
+/backend/*.seed
+/backend/*.pid.lock
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+/backend/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
