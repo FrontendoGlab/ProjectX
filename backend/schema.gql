@@ -1,0 +1,72 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  """Unique id of a user"""
+  id: Int!
+
+  """Unique nickname of a user"""
+  nickname: String!
+
+  """First name of a user"""
+  firstName: String!
+
+  """Last name of a user"""
+  lastName: String!
+
+  """url to profile picture"""
+  profilePic: String
+
+  """Short introduction of a user, max length 500 characters"""
+  bio: String
+
+  """Email of the user"""
+  email: String!
+
+  """Password hash of the user"""
+  password: String!
+
+  """visibility of email for other users"""
+  isEmailVisible: Boolean!
+
+  """visibility of name & surname for other users"""
+  isNameVisible: Boolean!
+
+  """Date and time when the user was created"""
+  createdAt: DateTime!
+
+  """Date and time when the user was updated last time"""
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  users: [User!]!
+  user(id: Int!): User!
+}
+
+type Mutation {
+  removeUser(id: Int!): User!
+  createUser(createUserInput: CreateUserInput!): User!
+  login(loginInput: LoginInput!): User!
+}
+
+input CreateUserInput {
+  nickname: String!
+  firstName: String!
+  lastName: String!
+  profilePic: String
+  bio: String
+  email: String!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}

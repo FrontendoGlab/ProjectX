@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    // Target ECMAScript version (ES6 or later is commonly used in modern projects)
+    "target": "es6",
+
+    // Module system for output files
+    "module": "esnext",
+
+    // Enables support for JSX syntax specific to React 17+ (change to "react" if using older versions)
+    "jsx": "react-jsx",
+
+    // Resolves modules relative to the `baseUrl` (often set to "src" for React projects)
+    "baseUrl": "./src",
+
+    // Output directory for compiled files (only needed if using TypeScript compilation directly)
+    "outDir": "./dist",
+
+    // Enable strict type-checking options
+    "strict": true,
+
+    // Includes DOM types (like `document` and `window`) in the project
+    "lib": ["dom", "es6", "dom.iterable", "scripthost"],
+
+    // Allows import/export syntax compatibility
+    "esModuleInterop": true,
+
+    // Provides a way to skip type-checking for `node_modules` for faster builds
+    "skipLibCheck": true,
+
+    // Enforces consistent casing in import paths, which helps avoid case sensitivity issues
+    "forceConsistentCasingInFileNames": true,
+
+    // Ensures code can be converted to ES modules, needed for React and some build tools
+    "moduleResolution": "node",
+
+    // Ensures compatibility with modern JavaScript modules
+    "resolveJsonModule": true,
+
+    // Enables importing files with default exports
+    "allowSyntheticDefaultImports": true
+  },
+  // Specifies which directories TypeScript should include
+  "include": ["src"],
+  
+  // Excludes unnecessary files from type-checking (like `node_modules` or `build`)
+  "exclude": ["node_modules", "build"]
+}
