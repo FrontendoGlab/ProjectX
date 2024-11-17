@@ -18,6 +18,7 @@ model User {
   nickname       String   @unique
   firstName      String  
   lastName       String  
+  profilePic     String?
   bio            String?  @db.Text  // Text field with a max length of 500 characters
   email          String   @unique
   password       String

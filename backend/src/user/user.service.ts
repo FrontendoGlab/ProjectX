@@ -2,16 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { PrismaService } from 'src/prisma/prisma.service';
-import * as bcrypt from 'bcrypt';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class UserService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createUserInput: CreateUserInput) {
-    // args - (password, salt rounds);
-    const hashedPassword = await bcrypt.hash(createUserInput.password, 10);
-
     const newUser = await this.prisma.user.create({
       data: {
         nickname: createUserInput.nickname,
@@ -19,21 +16,45 @@ export class UserService {
         lastName: createUserInput.lastName,
         bio: createUserInput.bio,
         email: createUserInput.email,
-        password: hashedPassword,
+        password: createUserInput.password,
         // Поля isEmailVisible и isNameVisible получат true по умолчанию, если это задано в Prisma schema
       },
     });
     return newUser;
   }
 
-
-
-  findAll() {
-    return `This action returns all user`;
+  async findAll() {
+    return this.prisma.user.findMany({
+      select: {
+        id: true,
+        nickname: true,
+        email: true,
+        firstName: true,
+        lastName: true,
+        bio: true,
+        // profilePic: true,
+        isEmailVisible: true,
+        isNameVisible: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOneById(id: number) {
+    return this.prisma.user.findUnique({
+      where: {
+        id: id,
+      },
+    });
+  }
+
+  async findOneByEmail(email: string) {
+    return this.prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
   }
 
   update(id: number, updateUserInput: UpdateUserInput) {
